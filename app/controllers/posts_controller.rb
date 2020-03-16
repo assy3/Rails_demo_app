@@ -24,8 +24,13 @@ class PostsController < ApplicationController
     # updateアクションの中身を作成してください
     @post = Post.find_by(id: params[:id])
     @post.content = params[:content]
-    @post.save
-    redirect_to("/posts/index")
+
+    if @post.save
+      redirect_to("/posts/index")
+    else
+      render("posts/edit")
+      # redirect_to("/posts/#{@post.id}/edit")
+    end
   end
 
   def destroy
