@@ -6,6 +6,7 @@
       <h2><%= @users.name %></h2>
       <!-- 以下で、メールアドレスを出力してください -->
       <p><%= @users.email %></p>
-    </div>
+      <%= link_to("編集", "/users/#{@users.id}/edit") %>
+      </div>
   </div>
 </div>
