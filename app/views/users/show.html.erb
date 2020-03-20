@@ -1,12 +1,13 @@
 <div class="main user-show">
   <div class="container">
     <div class="user">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
       <!-- ユーザー詳細ページ -->
       <!-- 以下で、ユーザー名を出力してください -->
-      <h2><%= @users.name %></h2>
+      <h2><%= @user.name %></h2>
       <!-- 以下で、メールアドレスを出力してください -->
-      <p><%= @users.email %></p>
-      <%= link_to("編集", "/users/#{@users.id}/edit") %>
+      <p><%= @user.email %></p>
+      <%= link_to("編集", "/users/#{@user.id}/edit") %>
       </div>
   </div>
 </div>

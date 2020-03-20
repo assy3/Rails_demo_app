@@ -4,6 +4,11 @@
     <!-- 以下のを使ってeach文を追加してください -->
     <% @users.each do |user| %>
       <div class="users-index-item">
+        <!-- プロフィール画像表示 -->
+        <div class="user-left">
+          <img src="<%= "/user_images/#{user.image_name}" %>">
+        </div>
+
         <div class="user-right">
           <%= link_to(user.name, "/users/#{user.id}") %>
         </div>
