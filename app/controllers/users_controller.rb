@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only:[:index, :show, :edit, :update]}
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update]}
 
@@ -22,14 +22,12 @@ class UsersController < ApplicationController
       image_name: "default_user.jpg",
       password: params[:password]
     )
-
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
-      # render("users/new")
-      render("/users/new")
+      render("users/new")
     end
   end
 
@@ -42,7 +40,6 @@ class UsersController < ApplicationController
     @user.name = params[:name]
     @user.email = params[:email]
 
-    # 画像が無事に送信された場合
     if params[:image]
       @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
@@ -61,12 +58,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    # 入力内容と一致するユーザーを取得し、変数@userに代入してください
-
-    # @userが存在するかどうかを判定するif文を作成してください
-    @user = User.find_by(email: params[:email], password: params[:password])
-    # ログイン成功
-    if @user
+    # メールアドレスのみを用いて、ユーザーを取得するように書き換えてください
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/posts/index")
@@ -84,19 +78,16 @@ class UsersController < ApplicationController
     redirect_to("/login")
   end
 
-  # 他人の情報を編集できないようにする
-  def ensure_correct_user
-      # ログイン中のユーザーとidと編集したいユーザーidが等しくない場合
-      if @current_user.id != params[:id].to_i
-        flash[:notice] = "権限がありません"
-        redirect_to("/posts/index")
-      end
-  end
-
   def likes
     @user = User.find_by(id: params[:id])
-    # ユーザーに紐づくLikeデータを取得
     @likes = Like.where(user_id: @user.id)
+  end
+
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 
 end
