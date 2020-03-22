@@ -93,4 +93,10 @@ class UsersController < ApplicationController
       end
   end
 
+  def likes
+    @user = User.find_by(id: params[:id])
+    # ユーザーに紐づくLikeデータを取得
+    @likes = Like.where(user_id: @user.id)
+  end
+
 end

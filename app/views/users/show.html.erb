@@ -3,16 +3,17 @@
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <!-- ユーザー詳細ページ -->
-      <!-- 以下で、ユーザー名を出力してください -->
       <h2><%= @user.name %></h2>
-      <!-- 以下で、メールアドレスを出力してください -->
       <p><%= @user.email %></p>
-
-
       <% if @user.id == @current_user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
+
+    <ul class="user-tabs">
+        <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+        <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
 
     <% @user.posts.each do |post| %>
         <div class="posts-index-item">
@@ -27,6 +28,6 @@
           </div>
         </div>
     <% end %>
-    
+
   </div>
 </div>
