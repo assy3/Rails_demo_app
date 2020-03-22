@@ -21,6 +21,6 @@ class YoutubeController < ApplicationController
   end
 
   def index
-    @youtube_data = find_videos('明日香ちゃんねる')
+    @youtube_data = find_videos('エガちゃんねる')
   end
 end
