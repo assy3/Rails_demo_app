@@ -37,6 +37,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt'
 
+gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
+# gem 'google-api-client', '~> 0.11'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
