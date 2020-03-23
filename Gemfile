@@ -43,13 +43,12 @@ gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 # gem 'google-api-client', '~> 0.11'
 
 group :development, :test do
-  gem 'sqlite3', '>= 1.4.2'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
-  gem 'sqlite3', '>= 1.4.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
