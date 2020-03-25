@@ -1,34 +1,21 @@
 class YoutubeController < ApplicationController
-  # require 'google/apis/youtube_v3'
-  # require 'active_support/all'
-  GOOGLE_API_KEY = "AIzaSyBPVettgbut7W51LeYaoag1Ej45P6hSEfg"
+  require 'rubygems'
+  require 'google/apis/youtube_v3'
+  # require 'trollop'
 
+  API_KEY = "AIzaSyBPVettgbut7W51LeYaoag1Ej45P6hSEfg"
+  YOUTUBE_API_SERVICE_NAME = 'youtube'
+  YOUTUBE_API_VERSION = 'v3'
 
-  def find_videos(keyword, after: 1.months.ago, before: Time.now)
-    service = Google::Apis::YoutubeV3::YouTubeService.new
-    service.key = GOOGLE_API_KEY
-
-    next_page_token = nil
-    opt = {
-      q: keyword,
-      type: 'video',
-      max_results: 3,
-      order: :date,
-      page_token: next_page_token,
-      published_after: after.iso8601,
-      published_before: before.iso8601
-    }
-    service.list_searches(:snippet, opt)
-
-  end
-
-
-  def get_channel_data(channel_id)
+  def get_service
+      youtube = Google::Apis::YoutubeV3::YouTubeService.new
+      youtube.key = API_KEY
+      return youtube
   end
 
   def index
-    @youtube_data = find_videos('エガちゃんねる')
+    youtube = get_service
+    @youtube = youtube.list_searches("id,snippet", type: "channel", q: "ヒカキン", max_results: 5)
 
-    # @channel_data = get_channel_data('XXXXXXXXXXXX')
   end
 end
