@@ -1,14 +1,14 @@
 <div class="main users-index">
   <div class="container">
-<p><%= "チャンネルタイトル" %></p>
-<p><%= @youtube.items %></p>
-<img src="<%= "https://yt3.ggpht.com/-NFhw6-eus8Y/AAAAAAAAAAI/AAAAAAAAAAA/rtPbnb9gvAQ/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" %>">
-<% @youtube.items.each do |item| %>
-  <% snippet = item.snippet %>
-  <h4><%= snippet.title %></h4>
-  <p><%= snippet.published_at %>
-  <%= snippet.channel_title %></p>
-  <div><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<% end %>
+    <h3><%= @you.items %></h3>
+    <p><%= @youtube.items %></p>
+    <% @youtube.items.each do |item| %>
+      <% snippet = item.snippet %>
+      <p><%= "-------------------------------------" %></p>
+          <p><%= "【チャンネル名】#{snippet.title}" %></p>
+          <img src="<%= snippet.thumbnails.default.url %>">
+          <p><%= "【チャンネル概要】#{snippet.description}" %></p>
+      <p><%= "-------------------------------------" %></p>
+    <% end %>
   </div>
 </div>
