@@ -39,7 +39,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt'
 
-gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
+# gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
+
+gem 'google-api-client', '<0.9'
+gem 'trollop', '~> 2.1'
 # gem 'google-api-client', '~> 0.11'
 
 group :development, :test do
@@ -63,9 +66,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data'
 
-
-# PostgreSQL
 group :production do
   gem 'pg'
 end

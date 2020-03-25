@@ -1,8 +1,5 @@
 <div class="main users-index">
   <div class="container">
-    <p><%= @you.items %></p>
-
-
     <h1><%= "-----------------------------------" %></h1>
         <b><h2>【チャンネル名】：</h2></b><h2><%= "#{@you.items[0].snippet.title}" %></h2>
         <img src="<%= @you.items[0].snippet.thumbnails.default.url %>">
@@ -11,15 +8,5 @@
         <b><p>【動画投稿数】：</p></b><p><%= "#{@you.items[0].statistics.video_count}" %></p>
         <b><p>【総再生数】：</p></b><p><%= "#{@you.items[0].statistics.view_count}" %></p>
     <h1><%= "-----------------------------------" %></h1>
-
-    <p><%= @youtube.items %></p>
-    <% @youtube.items.each do |item| %>
-      <% snippet = item.snippet %>
-      <p><%= "-------------------------------------" %></p>
-          <p><%= "【チャンネル名】#{snippet.title}" %></p>
-          <img src="<%= snippet.thumbnails.default.url %>">
-          <p><%= "【チャンネル概要】#{snippet.description}" %></p>
-      <p><%= "-------------------------------------" %></p>
-    <% end %>
   </div>
 </div>
