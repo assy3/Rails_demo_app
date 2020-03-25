@@ -20,6 +20,12 @@
       </div>
       <ul class="header-menus">
         <% if @current_user %>
+        <li>
+            <%= link_to("review", "/review") %>
+        </li>
+        <li>
+            <%= link_to("video", "/video") %>
+        </li>
           <li>
                <!--ユーザー名 -->
               <%= link_to("Youtube", "/youtube") %>

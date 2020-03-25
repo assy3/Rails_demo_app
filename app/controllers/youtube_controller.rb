@@ -43,4 +43,11 @@ class YoutubeController < ApplicationController
     @youtube_data = find_videos('明日香ちゃんねる')
   end
 
+
+  def review
+    youtube = get_service
+    @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
+  end
+
+
 end

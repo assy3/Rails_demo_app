@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'review' => "youtube#review"
   get 'youtube' => "youtube#index"
   get 'video' => "youtube#video"
 
