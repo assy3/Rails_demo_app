@@ -1,6 +1,6 @@
 class YoutubeController < ApplicationController
-  require 'rubygems'
-  require 'google/apis/youtube_v3'
+  # require 'rubygems'
+  # require 'google/apis/youtube_v3'
   # require 'trollop'
 
   API_KEY = "AIzaSyBPVettgbut7W51LeYaoag1Ej45P6hSEfg"
@@ -16,7 +16,7 @@ class YoutubeController < ApplicationController
 
   def index
     youtube = get_service
-    @youtube = youtube.list_searches("id,snippet", type: "channel", q: "ヒカキン", max_results: 5)
+    @youtube = youtube.list_searches("id,snippet", type: "channel", q: "エガちゃんねる", max_results: 5)
     @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
     # type playlist video
   end
@@ -46,7 +46,7 @@ class YoutubeController < ApplicationController
 
   def review
     youtube = get_service
-    @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
+    @you = youtube.list_channels("id,snippet,statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
   end
 
 
