@@ -1,25 +1,11 @@
-class YoutubesController < ApplicationController
+class YoutubeapisController < ApplicationController
+
   # require 'rubygems'
   # require 'google/apis/youtube_v3'
   require 'google/apis/youtube_v3'
   # require 'trollop'
 
   API_KEY = "AIzaSyBPVettgbut7W51LeYaoag1Ej45P6hSEfg"
-  YOUTUBE_API_SERVICE_NAME = 'youtube'
-  YOUTUBE_API_VERSION = 'v3'
-
-  def index
-    youtube = get_service
-    @youtube = youtube.list_searches("id,snippet", type: "channel", q: "エガちゃんねる", max_results: 5)
-    @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
-  end
-
-  def get_service
-      youtube = Google::Apis::YoutubeV3::YouTubeService.new
-      youtube.key = API_KEY
-      return youtube
-  end
-
   def find_videos(keyword, after: 1.months.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
     service.key = API_KEY
@@ -37,16 +23,12 @@ class YoutubesController < ApplicationController
     service.list_searches(:snippet, opt)
   end
 
-  def video
+  def index
     @youtube_data = find_videos('明日香ちゃんねる')
   end
 
-  def review
-    youtube = get_service
-    @you = youtube.list_channels("id,snippet,statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
-  end
 
-  def sample
-  end
+
+
 
 end
