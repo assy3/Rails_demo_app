@@ -43,6 +43,8 @@ gem 'bcrypt'
 
 gem 'google-api-client', '<0.9'
 gem 'trollop', '~> 2.1'
+
+gem 'rails_12factor', group: :production
 # gem 'google-api-client', '~> 0.11'
 
 group :development, :test do
