@@ -7,18 +7,18 @@ class YoutubesController < ApplicationController
   YOUTUBE_API_SERVICE_NAME = 'youtube'
   YOUTUBE_API_VERSION = 'v3'
 
-# クエリからチャンネル情報取得
-  def get_service
-      youtube = Google::Apis::YoutubeV3::YouTubeService.new
-      youtube.key = API_KEY
-      return youtube
-  end
 
   def index
     youtube = get_service
     @youtube = youtube.list_searches("id,snippet", type: "channel", q: "エガちゃんねる", max_results: 5)
     @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
     # type playlist video
+  end
+# クエリからチャンネル情報取得
+  def get_service
+      youtube = Google::Apis::YoutubeV3::YouTubeService.new
+      youtube.key = API_KEY
+      return youtube
   end
 
 # クエリから動画情報取得
