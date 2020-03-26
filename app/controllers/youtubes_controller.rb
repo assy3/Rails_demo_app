@@ -7,13 +7,13 @@ class YoutubesController < ApplicationController
   YOUTUBE_API_SERVICE_NAME = 'youtube'
   YOUTUBE_API_VERSION = 'v3'
 
-
   def index
     youtube = get_service
-    @youtube = youtube.list_searches("id,snippet", type: "channel", q: "エガちゃんねる", max_results: 5)
-    @you = youtube.list_channels("id,snippet,statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
+    @youtube = youtube.list_searches("id, snippet", type: "channel", q: "エガちゃんねる", max_results: 5)
+    @you = youtube.list_channels("id, snippet, statistics", id: "UCZf__ehlCEBPop-_sldpBUQ")
     # type playlist video
   end
+
 # クエリからチャンネル情報取得
   def get_service
       youtube = Google::Apis::YoutubeV3::YouTubeService.new
@@ -46,7 +46,7 @@ class YoutubesController < ApplicationController
 
   def review
     youtube = get_service
-    @you = youtube.list_channels("id,snippet,statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
+    @you = youtube.list_channels("id, snippet, statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
   end
 
   def sample
