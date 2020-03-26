@@ -1,8 +1,4 @@
 class YoutubesController < ApplicationController
-  # require 'rubygems'
-  # require 'google/apis/youtube_v3'
-  # require 'trollop'
-
   API_KEY = "AIzaSyBPVettgbut7W51LeYaoag1Ej45P6hSEfg"
   YOUTUBE_API_SERVICE_NAME = 'youtube'
   YOUTUBE_API_VERSION = 'v3'
