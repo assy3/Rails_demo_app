@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'review' => "youtube#review"
   get 'youtube' => "youtube#index"
   get 'video' => "youtube#video"
+  get 'sample' => "youtube#sample"
 
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"

@@ -1,0 +1,76 @@
+<div class="main users-index">
+  <div class="container">
+
+    <h1><%= "-----------------------------------" %></h1>
+
+    <h1>レーダーチャート</h1>
+      <canvas id="myRaderChart"></canvas>
+      <!-- CDN -->
+    　<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+      <script>
+        var ctx = document.getElementById("myRaderChart");
+        var myRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ["英語", "数学", "国語", "理科", "社会"],
+                datasets: [{
+                    label: 'Aさん',
+                    data: [3, 4, 2, 1, 5],
+                    backgroundColor: 'RGBA(225,95,150, 0.5)',
+                    borderColor: 'RGBA(225,95,150, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'RGB(46,106,177)'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '試験成績'
+                },
+                scale:{
+                    ticks:{
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        stepSize: 1,
+                        callback: function(value, index, values){
+                            return  value +  '点'
+                        }
+                    }
+                }
+            }
+        });
+        </script>
+    <h1><%= "-----------------------------------" %></h1>
+
+
+
+    <% input_average = 2 %>
+        <div class="wrap">
+            <% if input_average >= 0 and input_average < 0.5 %>
+                <span class="rate rate0"></span>
+            <% elsif input_average >= 0.5 and input_average < 1.5  %>
+                <span class="rate rate1"></span>
+            <% elsif input_average >= 1.5 and input_average < 2  %>
+                <span class="rate rate1-5"></span>
+            <% elsif input_average >= 2 and input_average < 2.5  %>
+                <span class="rate rate2"></span>
+            <% elsif input_average >= 2.5 and input_average < 3  %>
+                <span class="rate rate2-5"></span>
+            <% elsif input_average >= 3 and input_average < 3.5  %>
+                <span class="rate rate3"></span>
+            <% elsif input_average >= 3.5 and input_average < 4  %>
+                <span class="rate rate3-5"></span>
+            <% elsif input_average >= 4 and input_average < 4.5  %>
+                <span class="rate rate4"></span>
+            <% elsif input_average >= 4.5 and input_average < 5  %>
+                <span class="rate rate4-5"></span>
+            <% elsif input_average == 5  %>
+                <span class="rate rate5"></span>
+        </div>
+    <% end %>
+
+
+
+  </div>
+</div>

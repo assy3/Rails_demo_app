@@ -49,5 +49,7 @@ class YoutubeController < ApplicationController
     @you = youtube.list_channels("id,snippet,statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
   end
 
+  def sample
+  end
 
 end
