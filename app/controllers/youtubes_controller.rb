@@ -41,8 +41,8 @@ class YoutubesController < ApplicationController
 
 
   def review
-    youtube = get_service
-    @you = youtube.list_channels("id, snippet, statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
+    recieved_youtube = get_service
+    @you = recieved_youtube.list_channels("id, snippet, statistics", id: "UCL6JY2DXJNDOIqCP1CRADng")
   end
 
   def sample
