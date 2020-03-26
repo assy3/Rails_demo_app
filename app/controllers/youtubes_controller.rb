@@ -1,4 +1,4 @@
-class YoutubeController < ApplicationController
+class YoutubesController < ApplicationController
   # require 'rubygems'
   # require 'google/apis/youtube_v3'
   # require 'trollop'
